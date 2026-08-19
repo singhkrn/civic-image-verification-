@@ -8,13 +8,13 @@
 </head>
 <body>
     <div class="sidebar">
-    <h2>Admin Dashboard</h2>
-    <ul>
-        <li class="nav-item active" onclick="filterView('pending')">Pending Reviews</li>
-        <li class="nav-item" onclick="filterView('resolved')">Resolved Issues</li>
-        <li class="nav-item" onclick="filterView('rejected')">Rejected Duplicates</li>
-    </ul>
-</div>
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li class="nav-item active" onclick="filterView('pending')">Pending Reviews</li>
+            <li class="nav-item" onclick="filterView('resolved')">Resolved Issues</li>
+            <li class="nav-item" onclick="filterView('rejected')">Rejected Duplicates</li>
+        </ul>
+    </div>
     
     <div class="main-content">
         <h1>Manual Image Review Tool</h1>
@@ -26,10 +26,10 @@
         </div>
 
         <div id="adminResults" class="hidden">
-    <h3>Detailed Diagnostic Report</h3>
-    <pre id="jsonOutput"></pre>
-    <button type="button" id="resolveBtn" onclick="markAsResolved()" style="background-color: #10b981; margin-top: 10px;">Mark Issue as Resolved</button>
-</div>
+            <h3>Detailed Diagnostic Report</h3>
+            <pre id="jsonOutput"></pre>
+            <button type="button" id="resolveBtn" onclick="markAsResolved()" style="background-color: #10b981; margin-top: 10px;">Mark Issue as Resolved</button>
+        </div>
     </div>
     <script src="script_copy.js"></script>
 </body>
