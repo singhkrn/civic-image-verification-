@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+torch
+torchvision
+transformers
+sentence-transformers
+pillow
+imagehash
+scikit-learn
