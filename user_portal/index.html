@@ -3,199 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Portal</title>
-    <link rel="stylesheet" href="style.css" >
+    <title>Report Civic Issue</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--navbar-->
-    <div class="navbar">
-    
-   <h1>SCISM</h1>
-   <nav id="navLink">
-   <a href="#" >Dashboard</a>
-    <a href="#">my complain</a>
-    <a href="#">profile</a>
-     <button type="submit"> Log out</button>
-     </nav>
-    </div>
-
-
-    <!--main-->
-    <section class="hero">
-
-    <div class="hero-content">
-
-        <span class="hero-tag">
-            Citizen Portal
-        </span>
-
-        <h1>
-            Report. Track. Improve.
-        </h1>
-
-        <p>
-            Report civic problems in your area and help make your city better.
-        </p>
-
-    </div>
-
-    <button  id="newComplaintBtn" class="complaint-btn">
-        <span>⊕</span>
-        New Complaint
-    </button>
-</section>
-
-<!-- complain update -->
-<section class="stats">
-
-    <div class="stat-card">
-        <div class="stat-icon blue">
-            📄
+    <div class="container">
+        <h1>Report a Civic Issue</h1>
+        <p>Upload a clear photo of the issue (e.g., pothole, broken streetlight) for AI verification.</p>
+        
+        <div class="upload-box">
+            <input type="file" id="imageInput" accept="image/*">
+            <button onclick="submitReport()" id="submitBtn">Verify & Submit</button>
         </div>
 
-        <div>
-            <p>Total Complaints</p>
-            <h2>3</h2>
+        <div id="loading" class="hidden">Analyzing image with AI... Please wait.</div>
+        
+        <div id="results" class="hidden">
+            <h2>AI Verification Results</h2>
+            <p><strong>Status:</strong> <span id="resStatus"></span></p>
+            <p><strong>Detected Issue:</strong> <span id="resIssue"></span></p>
+            <p><strong>AI Confidence:</strong> <span id="resAi"></span></p>
         </div>
     </div>
-
-
-    <div class="stat-card">
-        <div class="stat-icon yellow">
-            ⏳
-        </div>
-
-        <div>
-            <p>Pending</p>
-            <h2>1</h2>
-        </div>
-    </div>
-
-
-    <div class="stat-card">
-        <div class="stat-icon purple">
-            🔄
-        </div>
-
-        <div>
-            <p>In Progress</p>
-            <h2>1</h2>
-        </div>
-    </div>
-
-
-    <div class="stat-card">
-        <div class="stat-icon green">
-            ✓
-        </div>
-
-        <div>
-            <p>Resolved</p>
-            <h2>1</h2>
-        </div>
-    </div>
-
-</section>
-
-
-<!--complain dashboard-->
-
-
-<section class="complaints-section">
-
-    <div class="complaints-header">
-        <div>
-            <h2>My Complaints</h2>
-            <p>Track all your reported civic issues.</p>
-        </div>
-
-        <input
-            type="text"
-            id="searchComplaint"
-            placeholder="Search..."
-        >
-    </div>
-
-    <!-- Complaints shows here  -->
-    <div id="complaintList"></div>
-
-</section>
-
-
-<!-- Complaint Form -->
-<div id="complaintModal" class="modal">
-
-    <div class="complaint-form">
-
-        <span class="close" onclick="closeComplaintForm()">
-            &times;
-        </span>
-
-        <h2>Report Civic Issue</h2>
-
-        <p>Provide details about the problem.</p>
-
-        <form id="complaintForm">
-
-            <label>Complaint Title</label>
-            <input
-                type="text"
-                id="title"
-                placeholder="example Street light not working"
-                 required
-            >
-
-            <label>Description</label>
-            <textarea
-                id="description"
-                placeholder="Describe the problem..."
-                required
-            ></textarea>
-
-            <label>Category</label>
-
-            <select id="category" required>
-                <option value="">Select category</option>
-                <option value="Road / Pothole">Road / Pothole</option>
-                <option value="Garbage">Garbage</option>
-                <option value="Street Light">Street Light</option>
-                <option value="Water">Water</option>
-                <option value="Drainage">Drainage</option>
-                <option value="Electricity">Electricity</option>
-                <option value="Other">Other</option>
-            </select>
-
-            <label>Location</label>
-
-            <input
-                type="text"
-                id="location"
-                placeholder="example Kalyanpur"
-                required
-            >
-
-            <label>Priority</label>
-
-            <select id="priority">
-                <option value="Low">Low</option>
-                <option value="Medium" selected>Medium</option>
-                <option value="High">High</option>
-            </select>
-
-            <label>Upload Image</label>
-
-            <input
-                type="file"
-                id="image"
-                accept="image/*"
-            >
-
-            <button type="submit" class="submit-btn">
-                Submit Complaint
-            </button>
-
-        </form>
-
-   <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
