@@ -8,13 +8,13 @@
 </head>
 <body>
     <div class="sidebar">
-        <h2>Admin Dashboard</h2>
-        <ul>
-            <li>Pending Reviews</li>
-            <li>Resolved Issues</li>
-            <li>Rejected Duplicates</li>
-        </ul>
-    </div>
+    <h2>Admin Dashboard</h2>
+    <ul>
+        <li class="nav-item active" onclick="filterView('pending')">Pending Reviews</li>
+        <li class="nav-item" onclick="filterView('resolved')">Resolved Issues</li>
+        <li class="nav-item" onclick="filterView('rejected')">Rejected Duplicates</li>
+    </ul>
+</div>
     
     <div class="main-content">
         <h1>Manual Image Review Tool</h1>
