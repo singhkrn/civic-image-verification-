@@ -1,27 +1,45 @@
-// Example function to attach to your "Upload" or "Submit" button
-async function handleImageUpload(imageFile) {
+async function submitReport() {
+    const fileInput = document.getElementById('imageInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const loading = document.getElementById('loading');
+    const results = document.getElementById('results');
+
+    if (fileInput.files.length === 0) {
+        alert("Please select an image first.");
+        return;
+    }
+
+    // Show loading state
+    submitBtn.disabled = true;
+    loading.classList.remove('hidden');
+    results.classList.add('hidden');
+
     const formData = new FormData();
-    formData.append("file", imageFile);
+    formData.append("file", fileInput.files[0]);
 
     try {
-        // This connects to the FastAPI backend running on your computer
+        // Send image to your FastAPI backend
         const response = await fetch("http://localhost:8000/api/verify", {
             method: "POST",
             body: formData
         });
 
-        if (!response.ok) {
-            throw new Error("Verification failed");
-        }
+        if (!response.ok) throw new Error("Verification failed on the server.");
 
-        const result = await response.json();
-        console.log("Verification Result:", result);
+        const data = await response.json();
         
-        // Example: Update your HTML with the result
-        alert(`Status: ${result.status}\nIssue: ${result.civic_issue.category}\nAI Score: ${result.ai_detection.probability}`);
+        // Display results
+        document.getElementById('resStatus').innerText = data.status;
+        document.getElementById('resIssue').innerText = data.civic_issue.category;
+        document.getElementById('resAi').innerText = data.ai_detection.status;
         
+        results.classList.remove('hidden');
+
     } catch (error) {
-        console.error("Error connecting to backend:", error);
-        alert("Make sure the Python backend is running!");
+        console.error(error);
+        alert("Error connecting to the backend. Make sure your Python server is running on localhost:8000.");
+    } finally {
+        submitBtn.disabled = false;
+        loading.classList.add('hidden');
     }
 }
